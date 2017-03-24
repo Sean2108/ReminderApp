@@ -9,13 +9,13 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    DBHandler db = new DBHandler(this);
-    List<Reminder> reminders = db.getAllReminders();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        DBHandler db = new DBHandler(this);
+        db.addReminder(new Reminder(1,"Dockers", "475 Brannan St #330, San Francisco, CA 94107, United States", "21/1", "22/2"));
+        List<Reminder> reminders = db.getAllReminders();
         RemindersAdapter adapter = new RemindersAdapter(this, reminders);
         ListView listView = (ListView) findViewById(R.id.listReminders);
         listView.setAdapter(adapter);

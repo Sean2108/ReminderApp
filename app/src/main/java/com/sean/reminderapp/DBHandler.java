@@ -30,7 +30,7 @@ public class DBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_REMINDERS_TABLE = "CREATE TABLE " + TABLE_REMINDERS + "("
-        + KEY_ID + " INTEGER PRIMARY KEY," + KEY_TITLE + " TEXT,"
+        + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_TITLE + " TEXT,"
         + KEY_DESCRIPTION + " TEXT," + KEY_CREATIONDATE + " DATE,"
         + KEY_REMINDERDATE + " DATE)";
         db.execSQL(CREATE_REMINDERS_TABLE);
