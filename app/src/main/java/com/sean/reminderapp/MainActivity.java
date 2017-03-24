@@ -1,16 +1,10 @@
 package com.sean.reminderapp;
 
-import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,5 +19,10 @@ public class MainActivity extends AppCompatActivity {
         RemindersAdapter adapter = new RemindersAdapter(this, reminders);
         ListView listView = (ListView) findViewById(R.id.listReminders);
         listView.setAdapter(adapter);
+    }
+
+    public void onClickBtn(View v) {
+        Intent intent = new Intent(this, NewReminderActivity.class);
+        startActivity(intent);
     }
 }
