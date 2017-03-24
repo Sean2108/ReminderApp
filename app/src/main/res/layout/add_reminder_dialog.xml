@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/add_dialog"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:Padding="10dp">
+    <ViewGroup
+        android:layout_alignParentTop="true">
+        <TextView
+            android:id="@+id/newtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter Title" />
+
+        <EditText
+            android:id="@+id/newtitleentry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:inputType="text" />
+    </ViewGroup>
+
+    <TextView
+        android:id="@+id/newdesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Description" />
+
+    <EditText
+        android:id="@+id/newdescentry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionDone"
+        android:inputType="text" />
+
+</RelativeLayout>
