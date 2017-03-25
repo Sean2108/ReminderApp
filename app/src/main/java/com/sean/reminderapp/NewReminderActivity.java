@@ -34,15 +34,15 @@ public class NewReminderActivity extends AppCompatActivity {
         Date creationDate = new Date();
         Reminder reminder = new Reminder(1,title.getText().toString(),desc.getText().toString(),
                 dateFormat.format(creationDate),reminderDate.getText().toString());
-        /*
+
         reminder.setTitle(title.getText().toString());
         reminder.setDescription(desc.getText().toString());
         reminder.setCreationDate(dateFormat.format(creationDate));
-        reminder.setReminderDate(reminderDate.getText().toString());*/
-        //if(reminder.getTitle()!=null) {
-            db.addReminder(reminder);
+        reminder.setReminderDate(reminderDate.getText().toString());
+        if(reminder.getTitle()!=null) {
+            //db.addReminder(reminder);
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-        //}
+        }
     }
 }
