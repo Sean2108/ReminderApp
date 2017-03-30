@@ -1,13 +1,16 @@
 package com.sean.reminderapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.icu.text.DateFormat;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.TimeZone;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class NewReminderActivity extends AppCompatActivity {
@@ -19,10 +22,10 @@ public class NewReminderActivity extends AppCompatActivity {
     }
 
     public void onClickCancel(View v) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void onClickNewReminder(View v) {
         DBHandler db = new DBHandler(this);
 
@@ -32,17 +35,12 @@ public class NewReminderActivity extends AppCompatActivity {
 
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY HH:mm");
         Date creationDate = new Date();
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
         Reminder reminder = new Reminder(1,title.getText().toString(),desc.getText().toString(),
                 dateFormat.format(creationDate),reminderDate.getText().toString());
-
-        reminder.setTitle(title.getText().toString());
-        reminder.setDescription(desc.getText().toString());
-        reminder.setCreationDate(dateFormat.format(creationDate));
-        reminder.setReminderDate(reminderDate.getText().toString());
-        if(reminder.getTitle()!=null) {
-            //db.addReminder(reminder);
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        }
+        db.addReminder(reminder);
+        Intent intent = new Intent();
+        setResult(2,intent);
+        finish();
     }
 }

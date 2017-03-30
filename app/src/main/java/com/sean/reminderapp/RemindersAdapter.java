@@ -31,11 +31,17 @@ public class RemindersAdapter extends ArrayAdapter<Reminder> {
         TextView reminderDesc = (TextView) convertView.findViewById(R.id.reminderDesc);
         TextView creationDate = (TextView) convertView.findViewById(R.id.creationDate);
         TextView reminderDate =  (TextView) convertView.findViewById(R.id.reminderDate);
+        TextView reminderLabel = (TextView) convertView.findViewById(R.id.reminderLabel);
         // Populate the data into the template view using the data object
         reminderTitle.setText(reminder.getTitle());
         reminderDesc.setText(reminder.getDescription());
         creationDate.setText(reminder.getCreationDate());
         reminderDate.setText(reminder.getReminderDate());
+
+        if (reminder.getReminderDate().isEmpty()) {
+            reminderDate.setVisibility(TextView.INVISIBLE);
+            reminderLabel.setVisibility(TextView.INVISIBLE);
+        }
         // Return the completed view to render on screen
         return convertView;
     }

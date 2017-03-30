@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.sean.reminderapp.NewReminderActivity"
-    android:id="@+id/addreminderlayout">
+    android:id="@+id/editreminderlayout">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter Title" />
+        android:text="Title" />
 
     <EditText
-        android:id="@+id/newtitle"
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:imeOptions="actionDone"
@@ -21,10 +21,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter Description" />
+        android:text="Description" />
 
     <EditText
-        android:id="@+id/newdesc"
+        android:id="@+id/desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:imeOptions="actionDone"
@@ -35,7 +35,7 @@
         android:text="Enter Date and Time of Reminder" />
 
     <EditText
-        android:id="@+id/newreminderdate"
+        android:id="@+id/reminderdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:imeOptions="actionDone"
@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="submit"
-            android:onClick="onClickNewReminder"
+            android:onClick="onClickEditReminder"
             android:id="@+id/submit"/>
     </LinearLayout>
 </LinearLayout>
