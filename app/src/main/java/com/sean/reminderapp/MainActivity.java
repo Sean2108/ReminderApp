@@ -1,9 +1,7 @@
 package com.sean.reminderapp;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
@@ -62,24 +60,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent,1);
                 return true;
             case R.id.delete:
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setMessage("Are you sure you want to delete the reminder?")
-                        .setTitle("Delete Reminder");
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        db.deleteReminder(toBeChanged);
-                        finish();
-                        startActivity(getIntent());
-                        Toast.makeText(getApplicationContext(), "Reminder deleted!", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                Dialog deleteDialog = new Dialog(toBeChanged, db, MainActivity.this, this);
+                deleteDialog.buildDialog("Delete Reminder", "Are you sure you want to delete the reminder?",
+                        "Reminder deleted!");
                 return true;
             default:
                 return super.onContextItemSelected(item);
