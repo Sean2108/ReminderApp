@@ -40,7 +40,7 @@ public class NewReminderActivity extends AppCompatActivity {
                 dateFormat.format(creationDate),reminderDate.getText().toString());
         db.addReminder(reminder);
         Intent intent = new Intent();
-        setResult(2,intent);
+        setResult(3,intent);
         finish();
     }
 }

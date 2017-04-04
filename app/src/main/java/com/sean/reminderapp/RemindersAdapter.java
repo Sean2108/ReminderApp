@@ -1,10 +1,10 @@
 package com.sean.reminderapp;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.content.Context;
 import android.widget.TextView;
 
 import java.util.List;
@@ -14,6 +14,8 @@ import java.util.List;
  */
 
 public class RemindersAdapter extends ArrayAdapter<Reminder> {
+    List<Reminder> reminders;
+
     public RemindersAdapter(Context context, List<Reminder> reminders) {
         super(context, 0, reminders);
     }
@@ -42,6 +44,13 @@ public class RemindersAdapter extends ArrayAdapter<Reminder> {
             reminderDate.setVisibility(TextView.INVISIBLE);
             reminderLabel.setVisibility(TextView.INVISIBLE);
         }
+
+        if(position%2==1)
+            //50 yellow
+            convertView.setBackgroundColor(0xFFFFFDE7);
+        else
+            //50 orange
+            convertView.setBackgroundColor(0xFFFFF3E0);
         // Return the completed view to render on screen
         return convertView;
     }

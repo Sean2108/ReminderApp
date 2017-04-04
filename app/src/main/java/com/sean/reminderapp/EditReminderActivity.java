@@ -43,6 +43,7 @@ public class EditReminderActivity extends AppCompatActivity {
                 r.getCreationDate(),reminderDate.getText().toString());
         db.updateReminder(updated);
         intent = new Intent();
+        intent.putExtra("title", title.getText().toString());
         setResult(2,intent);
         finish();
     }

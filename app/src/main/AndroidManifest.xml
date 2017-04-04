@@ -16,8 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewReminderActivity" />
-        <activity android:name=".EditReminderActivity"></activity>
+        <activity android:name=".NewReminderActivity"
+            android:label="New Reminder"/>
+        <activity android:name=".EditReminderActivity"
+            android:label="Edit Reminder"/>
     </application>
 
 </manifest>
