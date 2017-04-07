@@ -1,20 +1,21 @@
-package com.sean.reminderapp;
+package com.sean.reminderapp.data;
 
 import android.content.ContentValues;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+import com.sean.reminderapp.Reminder;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
  * Created by sean on 25/3/17.
  */
 
-public class DBHandler extends SQLiteOpenHelper {
+public class SQLiteHandlerImpl extends SQLiteOpenHelper implements DBHandler {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "RemindersDB";
     private static final String TABLE_REMINDERS = "reminders";
@@ -23,7 +24,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_DESCRIPTION = "description";
     private static final String KEY_CREATIONDATE = "creationDate";
     private static final String KEY_REMINDERDATE = "reminderDate";
-    public DBHandler(Context context) {
+    public SQLiteHandlerImpl(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -94,7 +95,7 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
         cursor.close();
-// return count
+        // return count
         return cursor.getCount();
     }
 
@@ -105,7 +106,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_DESCRIPTION, reminder.getDescription());
         values.put(KEY_CREATIONDATE, reminder.getCreationDate());
         values.put(KEY_REMINDERDATE, reminder.getReminderDate());
-// updating row
+        // updating row
         return db.update(TABLE_REMINDERS, values, KEY_ID + " = ?",
                 new String[]{String.valueOf(reminder.getId())});
     }

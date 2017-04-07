@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.sean.reminderapp.NewReminderActivity"
-    android:id="@+id/addreminderlayout">
+    tools:context="com.sean.reminderapp.activity.NewReminderActivity"
+    android:id="@+id/addreminderlayout"
+    android:layout_margin="16dp">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

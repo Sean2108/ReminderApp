@@ -1,4 +1,4 @@
-package com.sean.reminderapp;
+package com.sean.reminderapp.activity;
 
 import android.content.Intent;
 import android.icu.text.DateFormat;
@@ -10,6 +10,11 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+
+import com.sean.reminderapp.R;
+import com.sean.reminderapp.Reminder;
+import com.sean.reminderapp.data.DBHandler;
+import com.sean.reminderapp.data.SQLiteHandlerImpl;
 
 import java.util.Date;
 
@@ -27,7 +32,7 @@ public class NewReminderActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void onClickNewReminder(View v) {
-        DBHandler db = new DBHandler(this);
+        DBHandler db = new SQLiteHandlerImpl(this);
 
         EditText title = (EditText) findViewById(R.id.newtitle);
         EditText desc = (EditText) findViewById(R.id.newdesc);

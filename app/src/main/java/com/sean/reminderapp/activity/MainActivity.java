@@ -1,4 +1,4 @@
-package com.sean.reminderapp;
+package com.sean.reminderapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,13 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.sean.reminderapp.Dialog;
+import com.sean.reminderapp.R;
+import com.sean.reminderapp.Reminder;
+import com.sean.reminderapp.RemindersAdapter;
+import com.sean.reminderapp.data.DBHandler;
+import com.sean.reminderapp.data.SQLiteHandlerImpl;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,8 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        db = new DBHandler(this);
+        db = new SQLiteHandlerImpl(this);
         reminders = db.getAllReminders();
 
         //for (Reminder r: reminders) db.deleteReminder(r);
@@ -48,9 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        db = new DBHandler(this);
-        reminders = db.getAllReminders();
-
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         final Reminder toBeChanged = reminders.get((int)info.id);
         switch (item.getItemId()) {

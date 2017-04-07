@@ -1,4 +1,4 @@
-package com.sean.reminderapp;
+package com.sean.reminderapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,14 +6,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import com.sean.reminderapp.R;
+import com.sean.reminderapp.Reminder;
+import com.sean.reminderapp.data.DBHandler;
+import com.sean.reminderapp.data.SQLiteHandlerImpl;
+
 public class EditReminderActivity extends AppCompatActivity {
+
+    private DBHandler db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_reminder);
 
-        DBHandler db = new DBHandler(this);
+        db = new SQLiteHandlerImpl(this);
         Intent intent = getIntent();
         Reminder r = db.getReminder(intent.getIntExtra("TO_BE_CHANGED_ID",0));
 
@@ -32,7 +39,6 @@ public class EditReminderActivity extends AppCompatActivity {
     }
 
     public void onClickEditReminder(View v) {
-        DBHandler db = new DBHandler(this);
         Intent intent = getIntent();
         Reminder r = db.getReminder(intent.getIntExtra("TO_BE_CHANGED_ID",0));
 
