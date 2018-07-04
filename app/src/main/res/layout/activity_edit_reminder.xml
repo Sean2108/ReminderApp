@@ -11,8 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Title"
-        android:maxLength="30"/>
+        android:text="Title"/>
 
     <EditText
         android:id="@+id/title"
@@ -30,8 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:imeOptions="actionDone"
-        android:inputType="textCapSentences|textMultiLine"
-        android:maxLength="60"/>
+        android:inputType="textCapSentences|textMultiLine"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
